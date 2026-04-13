@@ -1,7 +1,7 @@
 function consultar() {
     const producto = document.getElementById("producto").value;
 
-    fetch(`http://localhost:8080/?producto=${producto}`)
+    fetch(`https://cadena-frio-api.onrender.com/?producto=${producto}`)
         .then(res => res.text())
         .then(data => {
             const resultado = document.getElementById("resultado");
