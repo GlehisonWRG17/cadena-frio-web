@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Cadena de Frío</title>
+
     <style>
         body {
             font-family: Arial;
-            text-align: center;
             background: #0f172a;
             color: white;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .info {
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 10px;
         }
 
         .card {
             background: #1e293b;
-            padding: 30px;
-            margin: 100px auto;
-            width: 300px;
+            padding: 25px;
+            margin: 20px 0;
             border-radius: 15px;
             box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+            text-align: center;
         }
 
         input {
             padding: 10px;
-            width: 80%;
+            width: 70%;
             border-radius: 8px;
             border: none;
         }
 
         button {
-            margin-top: 15px;
+            margin-top: 10px;
             padding: 10px 20px;
-            border: none;
             border-radius: 10px;
+            border: none;
             background: #22c55e;
             color: white;
             cursor: pointer;
@@ -42,29 +57,212 @@
 
         .ok {
             color: #22c55e;
+            font-weight: bold;
         }
 
         .error {
             color: #ef4444;
+            font-weight: bold;
         }
+
+        .spinner {
+            border: 4px solid #334155;
+            border-top: 4px solid #38bdf8;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin: 10px auto;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .member {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .member:hover {
+            transform: translateY(-5px);
+            background: #334155;
+        }
+
+        .codigo {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .arquitectura {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+        
+        .footer {
+    margin-top: 30px;
+    font-size: 12px;
+    text-align: center;
+    color: #38bdf8; /* 🔥 azul elegante */
+    opacity: 0.8;
+}
+
+        @media (max-width: 900px) {
+            .team-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            input {
+                width: 100%;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .team-container {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+
+        /* 📱 MODO APP MÓVIL */
+@media (max-width: 600px) {
+
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .card {
+        margin: 10px 0;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    /* 👨‍💻 TEAM EN COLUMNA */
+    .team-container {
+        grid-template-columns: 1fr;
+    }
+
+    .member {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    /* 🧠 TEXTO MÁS LEGIBLE */
+    .info, .arquitectura {
+        font-size: 12px;
+        padding: 0 5px;
+    }
+}
     </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h2>🌡️ Cadena de Frío</h2>
+<div class="container">
 
-    <input type="text" id="producto" placeholder="vacunas / carne">
+    <div class="info">
+        <p><strong>Materia:</strong> SISTEMAS DISTRIBUIDOS GRUPO 301</p>
+        <p><strong>Universidad:</strong> Universidad Distrital Francisco Jose De Caldas</p>
+    </div>
 
-    <br>
+    <div class="card">
+        <h2>🌡️ Cadena de Frío</h2>
 
-    <button onclick="consultar()">Consultar</button>
+        <input type="text" id="producto" placeholder="Ej: vacunas">
+        <br>
+        <button onclick="consultar()">Consultar</button>
 
-    <p id="resultado"></p>
+        <div class="spinner" id="spinner"></div>
+
+        <p id="resultado"></p>
+    </div>
+
+    <h3>👨‍💻 Equipo de Desarrollo</h3>
+
+    <div class="team-container">
+        <div class="member">
+            <p><strong>Tatiana Rojas</strong></p>
+            <p class="codigo">Código: 20261678045</p>
+            <p>Ing. Telematica - 678</p>
+        </div>
+
+        <div class="member">
+            <p><strong>Cristian Oviedo</strong></p>
+            <p class="codigo">Código: 20261678043</p>
+            <p>Ing. Telematica - 678</p>
+        </div>
+
+        <div class="member">
+            <p><strong>Jose Vargas</strong></p>
+            <p class="codigo">Código: 20261678007</p>
+            <p>Ing. Telematica - 678</p>
+        </div>
+
+        <div class="member">
+            <p><strong>Glehison Rojas</strong></p>
+            <p class="codigo">Código: 20261678047</p>
+            <p>Ing. Telematica - 678</p>
+        </div>
+    </div>
+
+    <div class="arquitectura">
+        Esta aplicación implementa una arquitectura cliente-servidor.
+        El frontend está desplegado en GitHub Pages y se comunica con
+        un backend en la nube mediante HTTP.
+    </div>
+
+    <div class="footer">
+    © 2026 - Proyecto Cadena de Frío | Sistemas Distribuidos
+</div>
 </div>
 
-<script src="script.js"></script>
+<!-- 🔥 AQUÍ SE CONECTA TU JS -->
+<script src="./script.js"></script>
 
 </body>
 </html>

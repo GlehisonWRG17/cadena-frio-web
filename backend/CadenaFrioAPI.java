@@ -10,7 +10,7 @@ public class CadenaFrioAPI {
         if (System.getenv("PORT") != null) {
             port = Integer.parseInt(System.getenv("PORT"));
         } else {
-            port = 8081; // cambia aquí para no chocar con Tomcat
+            port = 8081; 
         }
 
         ServerSocket serverSocket = new ServerSocket(port);
